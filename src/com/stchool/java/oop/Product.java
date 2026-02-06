@@ -18,7 +18,7 @@ public class Product {
         centralTax = 2.5F;
         stateTax = 2.5F;
         discountPercentage = 7.5F;
-        shippingCharges=100;
+        shippingCharges = 100;
 
     }
 
@@ -38,12 +38,12 @@ public class Product {
         System.out.println("Product ID : " + id);
         System.out.println("Product Name : " + name);
         System.out.println("Product maxRetailPrice : " + maxRetailPrice);
-        System.out.println("Discount Amount : "+calculateDiscount());
-        System.out.println("Price after Discount : "+priceAfterDiscount());
+        System.out.println("Discount Amount : " + calculateDiscount());
+        System.out.println("Price after Discount : " + priceAfterDiscount());
         System.out.println("centralTax : " + centralTax);
         System.out.println("StateTax : " + stateTax);
         System.out.println("Shipping charges : " + shippingCharges);
-        System.out.println("Final Bill : "+calculateFinalPrice());
+        System.out.println("Final Bill : " + calculateFinalPrice());
 
     }
 
@@ -66,7 +66,7 @@ public class Product {
     }
 
     float calculateFinalPrice() {
-        return priceAfterDiscount()+calculateStateTax()+calculateCentralTax() + shippingCharges;
+        return priceAfterDiscount() + calculateStateTax() + calculateCentralTax() + shippingCharges;
 
     }
 }
