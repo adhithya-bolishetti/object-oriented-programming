@@ -13,7 +13,7 @@ public class Product {
 
     public Product() {
         id = 123;
-        name = "dell laptop";
+        name = "HP";
         maxRetailPrice = 50000.00F;
         centralTax = 2.5F;
         stateTax = 2.5F;
