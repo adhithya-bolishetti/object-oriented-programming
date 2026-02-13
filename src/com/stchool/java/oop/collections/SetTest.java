@@ -14,29 +14,25 @@ public class SetTest {
         productHashSet.add(new Product("114","HP",70000.99));
         productHashSet.add(new Product("112","Lenovo",60000.99));
 
-        System.out.println(productHashSet.size());
+        System.out.println("HashSet size : " + productHashSet.size());
 
-        Iterator<Product> productIterator = productHashSet.iterator();
-
-        while (productIterator.hasNext()) {
-            System.out.println(productIterator.next());
-        }
-
+        System.out.println(productHashSet);
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter product id :");
         String productId = scanner.next();
 
-        Iterator<Product> productIterator1 = productHashSet.iterator();
-        while (productIterator1.hasNext()) {
-            Product p = productIterator1.next();
+        Iterator<Product> productIterator = productHashSet.iterator();
+        while (productIterator.hasNext()) {
+            Product p = productIterator.next();
             if(p.getId().equals(productId)) {
-                productIterator1.remove();
+                productIterator.remove();
             }
         }
-
+        System.out.println("=========================================");
         System.out.println("Products after removing");
-        System.out.println(productHashSet.size());
+        System.out.println("HashSet size : " + productHashSet.size());
+        System.out.println(productHashSet);
 
         scanner.close();
     }
