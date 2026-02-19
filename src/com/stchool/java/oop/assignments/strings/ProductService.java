@@ -1,8 +1,14 @@
 package com.stchool.java.oop.assignments.strings;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class ProductService {
+    private HashSet<Product> products;
+
+    public ProductService() {
+        this.products = new HashSet<>();
+    }
     public HashSet<Product> getProducts(String[] productsData) {
         HashSet<Product> productsDataHashSet = new HashSet<>();
         for(String s : productsData) {
@@ -28,5 +34,20 @@ public class ProductService {
         System.out.println("Discount Percentage : " + product.getDiscountPercentage());
         System.out.println("Finalprice : " + calculateFinalPrice(product));
         System.out.println();
+    }
+
+    HashSet<Product> getProductsById(String[] ids){
+        HashSet<Product> productsById = new HashSet<>();
+
+        for(String id: ids){
+            Iterator<Product> iterator = products.iterator();
+            while (iterator.hasNext()){
+                Product product = iterator.next();
+                if(product.getId().equals(id))
+                    productsById.add(product);
+            }
+        }
+
+        return productsById;
     }
 }
