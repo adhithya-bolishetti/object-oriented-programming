@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 public class ProductRepository {
     ArrayList<Product> productArrayList;
+    ProductService productService = new ProductService();
 
     public ProductRepository() {
         productArrayList = new ArrayList<>();
@@ -31,7 +32,7 @@ public class ProductRepository {
     public Product getProductById(String id) {
         Product product = null;
         for (Product p : productArrayList) {
-            if(p.getId().equals(id)) {
+            if (p.getId().equals(id)) {
                 product = p;
             }
         }
@@ -43,7 +44,7 @@ public class ProductRepository {
         Iterator<Product> productIterator = productArrayList.iterator();
         while (productIterator.hasNext()) {
             Product existingProduct = productIterator.next();
-            if(existingProduct.getId().equals(id)) {
+            if (existingProduct.getId().equals(id)) {
                 productIterator.remove();
             }
         }
@@ -55,19 +56,70 @@ public class ProductRepository {
         Iterator<Product> productIterator = productArrayList.iterator();
         while (productIterator.hasNext()) {
             Product deleteById = productIterator.next();
-            if(deleteById.getId().equals(id)) {
+            if (deleteById.getId().equals(id)) {
                 productIterator.remove();
             }
         }
     }
 
     public void displayAllProducts() {
-        for(Product product : productArrayList) {
+        for (Product product : productArrayList) {
             System.out.println("================================");
             System.out.println("Product Id : " + product.getId());
             System.out.println("Product Name : " + product.getName());
             System.out.println("DiscountPercentage : " + product.getDiscountPercentage());
             System.out.println("Max Retail Price : " + product.getMaxRetailPrice());
         }
+    }
+
+    public Product getHighestPriceProduct() {
+        double maxPrice = Double.MIN_VALUE;
+        Product maxPriceProduct = null;
+        for (Product product : productArrayList) {
+            if (product.getMaxRetailPrice() > maxPrice) {
+                maxPriceProduct = product;
+            }
+        }
+        return maxPriceProduct;
+    }
+
+    public Product getLeastPriceProduct() {
+        double minPrice = Double.MAX_VALUE;
+        Product minPriceProduct = null;
+        for (Product product : productArrayList) {
+            if (product.getMaxRetailPrice() < minPrice) {
+                minPriceProduct = product;
+            }
+        }
+        return minPriceProduct;
+    }
+
+    public Product getMaxDiscountProduct() {
+        float maxDiscount = Float.MAX_VALUE;
+        Product maxDiscountProduct = null;
+        for (Product product : productArrayList) {
+            if (product.getDiscountPercentage() > maxDiscount) {
+                maxDiscountProduct = product;
+            }
+        }
+        return maxDiscountProduct;
+    }
+
+    public double getTotalValue() {
+        double totalValue = 0;
+        for (Product product : productArrayList) {
+            totalValue += productService.calculateFinalPrice(product);
+        }
+
+        return totalValue;
+    }
+
+    public double getAveragePrice() {
+        double totalValue = 0;
+        for (Product product : productArrayList) {
+            totalValue += productService.calculateFinalPrice(product);
+        }
+        double averagePrice = totalValue / productArrayList.size();
+        return averagePrice;
     }
 }
