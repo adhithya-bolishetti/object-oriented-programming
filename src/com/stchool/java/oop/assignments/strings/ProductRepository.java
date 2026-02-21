@@ -122,4 +122,24 @@ public class ProductRepository {
         double averagePrice = totalValue / productArrayList.size();
         return averagePrice;
     }
+
+    public int countProductAbovePrice(double price) {
+        int count = 0;
+        for (Product product : productArrayList) {
+            if (product.getMaxRetailPrice() > price) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public ArrayList<Product> getProductsWithDiscountAbove(float discount) {
+        ArrayList<Product> discountAboveProductsList = new ArrayList<>();
+        for (Product product : productArrayList) {
+            if (product.getDiscountPercentage() > discount) {
+                discountAboveProductsList.add(product);
+            }
+        }
+        return discountAboveProductsList;
+    }
 }
