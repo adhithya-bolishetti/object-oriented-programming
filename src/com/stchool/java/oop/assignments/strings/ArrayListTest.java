@@ -60,6 +60,7 @@ public class ArrayListTest {
         productRepository.sortByPriceDescending();
         productRepository.displayAllProducts();
 
+        System.out.println("************Products with Discount Above***************");
         System.out.println(productRepository.getProductsWithDiscountAbove(10.0F));
     }
 }
