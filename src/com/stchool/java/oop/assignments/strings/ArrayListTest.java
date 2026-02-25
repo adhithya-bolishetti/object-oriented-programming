@@ -41,7 +41,7 @@ public class ArrayListTest {
         product2.setDiscountPercentage(22.00F);
         System.out.println(productRepository.update("prod-105", product2));
 
-        System.out.println(productRepository.delete("prod-104"));
+        productRepository.delete("prod-104");
 
         productRepository.displayAllProducts();
 
@@ -59,5 +59,7 @@ public class ArrayListTest {
         System.out.println("********Sort By Price Descending***********");
         productRepository.sortByPriceDescending();
         productRepository.displayAllProducts();
+
+        System.out.println(productRepository.getProductsWithDiscountAbove(10.0F));
     }
 }

@@ -1,8 +1,6 @@
 package com.stchool.java.oop.assignments.strings;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
 
 public class ProductRepository {
 
@@ -32,42 +30,47 @@ public class ProductRepository {
     }
 
     public Product getProductById(String id) {
-        if(id.equals(null)) return null;
+        if (id.equals(null)) return null;
 
-        Product product = null;
         for (Product p : productArrayList) {
             if (p.getId().equals(id)) {
-                product = p;
-                break;
+                return p;
             }
         }
 
-        return product;
+        return null;
     }
 
     public Product update(String id, Product product) {
-        Iterator<Product> productIterator = productArrayList.iterator();
-        while (productIterator.hasNext()) {
-            Product existingProduct = productIterator.next();
-            if (existingProduct.getId().equals(id)) {
-                productIterator.remove();
-                break;
-            }
-        }
-        productArrayList.add(product);
+       if(id == null) {
+           return null;
+       } else {
+           Product existingProduct = getProductById(id);
+           if(existingProduct != null) {
+               productArrayList.remove(existingProduct);
+               productArrayList.add(product);
+           }
+       }
+
+//        Iterator<Product> productIterator = productArrayList.iterator();
+//        while (productIterator.hasNext()) {
+//            Product existingProduct = productIterator.next();
+//            if (existingProduct.getId().equals(id)) {
+//                productIterator.remove();
+//                break;
+//            }
+//        }
+//        productArrayList.add(product);
+
         return product;
     }
 
-    public String delete(String id) {
-        Iterator<Product> productIterator = productArrayList.iterator();
-        while (productIterator.hasNext()) {
-            Product deleteById = productIterator.next();
-            if (deleteById.getId().equals(id)) {
-                productIterator.remove();
-                break;
-            }
+    public void delete(String id) {
+        Product product = getProductById(id);
+
+        if(product != null) {
+            productArrayList.remove(product);
         }
-        return id;
     }
 
     public void displayAllProducts() {
