@@ -81,6 +81,32 @@ public class ProductRepository {
         }
     }
 
+    public void sortByPriceAscending() {
+        for (int i = 0; i < productArrayList.size() - 1; i++) {
+            for (int j = i + 1; j < productArrayList.size(); j++) {
+
+                if (productArrayList.get(i).getMaxRetailPrice() > productArrayList.get(j).getMaxRetailPrice()) {
+                    Product temp = productArrayList.get(i);
+                    productArrayList.set(i, productArrayList.get(j));
+                    productArrayList.set(j, temp);
+                }
+            }
+        }
+    }
+
+    public void sortByPriceDescending() {
+        for (int i = 0; i < productArrayList.size() - 1; i++) {
+            for (int j = i + 1; j < productArrayList.size(); j++) {
+
+                if (productArrayList.get(i).getMaxRetailPrice() < productArrayList.get(j).getMaxRetailPrice()) {
+                    Product temp = productArrayList.get(i);
+                    productArrayList.set(i, productArrayList.get(j));
+                    productArrayList.set(j, temp);
+                }
+            }
+        }
+    }
+
     public Product getHighestPriceProduct() {
         double maxPrice = Double.MIN_VALUE;
         Product maxPriceProduct = null;

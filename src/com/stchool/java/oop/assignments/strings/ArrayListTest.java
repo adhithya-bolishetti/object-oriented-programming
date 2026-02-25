@@ -52,6 +52,12 @@ public class ArrayListTest {
         System.out.println(productRepository.getAveragePrice());
         System.out.println(productRepository.countProductAbovePrice(50000.00));
 
+        System.out.println("********Sort By Price Ascending***********");
+        productRepository.sortByPriceAscending();
+        productRepository.displayAllProducts();
 
+        System.out.println("********Sort By Price Descending***********");
+        productRepository.sortByPriceDescending();
+        productRepository.displayAllProducts();
     }
 }
