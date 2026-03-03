@@ -51,17 +51,6 @@ public class ProductRepository {
                productArrayList.add(product);
            }
        }
-
-//        Iterator<Product> productIterator = productArrayList.iterator();
-//        while (productIterator.hasNext()) {
-//            Product existingProduct = productIterator.next();
-//            if (existingProduct.getId().equals(id)) {
-//                productIterator.remove();
-//                break;
-//            }
-//        }
-//        productArrayList.add(product);
-
         return product;
     }
 
